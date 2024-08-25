@@ -1,0 +1,9 @@
+1-Challenge SELECT: SELECT first_name,last_name,email FROM customer
+2-Challenge ORDER BY: SELECT * FROM customer ORDER BY last_name DESC, first_name DESC - SELECT first_name,last_name,email FROM customer ORDER BY 2 DESC, 1 DESC
+3-Distinct : distinct in terms of all selected columns(the same value in a coloumn occur) - SELECT DISTINCT amount FROM payment ORDER BY amount DESC
+4-Limit : limit number of rows
+5-Count : count number of rows (null will not be counted in that case) - SELECT COUNT([DISTINCT] coloum_name) FROM table_name
+6- SELECT DISTINCT district FROM address
+7-SELECT rental_date FROM rental ORDER BY 1 DESC LIMIT 1
+8-SELECT COUNT (*) FROM film
+9-SELECT COUNT(DISTINCT last_name ) FROM customer

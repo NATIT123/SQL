@@ -1,0 +1,3 @@
+1-Challenge SELECT: SELECT first_name,last_name,email FROM customer
+2-Challenge ORDER BY: SELECT * FROM customer ORDER BY last_name DESC, first_name DESC - SELECT first_name,last_name,email FROM customer ORDER BY 2 DESC, 1 DESC
+3-Distinct :distinct in terms of all selected columns(the same value in a coloumn occur) - SELECT DISTINCT amount FROM payment ORDER BY amount DESC
