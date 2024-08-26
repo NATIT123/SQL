@@ -1,0 +1,18 @@
+UPPER():upper word
+LOWER():lower word
+LENGTH():length word
+RIGHT()
+LEFT()
+|| :using when join string
+POSITION('delimiter' IN coloumn):using when find postion in string
+SUBTRING(string from start [for length]) 
+EXTRACT():extract parts of timestamp/date
+EXTRACT(field from date/time/interval)
+field:part of date/time
+date/time/interval:coloumn about date/time
+TO_CHAR():used to get custom formats timestamp/date/numbers
+TO_CHAR(rental_date,'MM-YYYY')
+1-SELECT LOWER(first_name),LOWER(last_name),LOWER(email) FROM customer WHERE LENGTH(first_name)>10 OR LENGTH(last_name)>10
+2-SELECT EXTRACT(month from payment_date) as month,SUM(amount) as total_payment_amount FROM payment GROUP BY month ORDER BY total_payment_amount DESC
+3-SELECT EXTRACT(DOW from payment_date) as day_of_week,SUM(amount) as total_payment_amount FROM payment GROUP BY 1 ORDER BY 2 DESC
+4-SELECT EXTRACT(WEEK from payment_date) as week,customer_id,SUM(amount) as total_payment_amount FROM payment GROUP BY (1,2) ORDER BY 3 DESC

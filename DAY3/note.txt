@@ -3,7 +3,8 @@ AVG()
 MIN()
 MAX()
 COUNT()
-NOT POSSIBLE WHEN SELECT SUM(amount) ,payment_id FROM payment using when grouping
+DATE()
+NOT POSSIBLE WHEN SELECT SUM(amount) ,payment_id FROM payment using when grouping like as DISTINCT
 1-SELECT MIN(replacement_cost), MIN(replacement_cost),ROUND(AVG(replacement_cost),2),SUM(replacement_cost) FROM film 
 2-SELECT staff_id,SUM(amount),COUNT(amount) FROM payment WHERE amount !=0 GROUP BY (staff_id) ORDER BY 2 DESC 	
 3-SELECT DATE(payment_date),staff_id,SUM(amount),COUNT(*) FROM payment GROUP BY staff_id ,DATE(payment_date) ORDER BY 3 DESC
