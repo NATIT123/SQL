@@ -1,0 +1,19 @@
+UNION():Combining multiple select statements
+Coloumn are matched by the order
+Data type must match
+no of coloumnns must match
+duplicates with UNION():value not duplicate
+	   with UNIONALL():value duplicate
+SUBQUERY-WHERE
+1-SELECT f.film_id,title from film f INNER JOIN inventory i ON f.film_id = i.film_id AND i.store_id = 2 GROUP BY (f.film_id,title)
+HAVING(COUNT(title)>3) ORDER BY f.film_id
+2-SELECT * FROM film WHERE film_id IN(SELECT film_id FROM inventory WHERE store_id=2 GROUP BY film_id HAVING COUNT(*)>3)
+3-SELECT first_name,last_name FROM customer WHERE customer_id IN(SELECT customer_id FROM payment
+WHERE payment_date BETWEEN '2020-01-25' AND '2020-01-26')
+4-SELECT first_name,last_name FROM customer WHERE customer_id IN(SELECT customer_id FROM payment
+WHERE payment_date BETWEEN '2020-01-25' AND '2020-01-26')
+5-SELECT first_name,email FROM customer WHERE customer_id IN(SELECT customer_id FROM payment GROUP BY 1 HAVING(SUM(amount)>30 ) )
+
+SUBQUERY FROM must using as SUBQUERY
+SUBQUREY SELECT
+Correlated subqueries
