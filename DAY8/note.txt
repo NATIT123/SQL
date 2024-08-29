@@ -1,0 +1,43 @@
+1-SELECT MIN(DISTINCT replacement_cost) FROM film
+
+2-SELECT (CASE 
+WHEN replacement_cost BETWEEN 9.99 AND 19.99 THEN 'low'
+WHEN replacement_cost BETWEEN 20.00 AND 24.99 THEN 'medium'
+ELSE 'high'
+END) as range,COUNT(*)
+FROM film
+
+GROUP BY range ORDER BY 2 DESC
+3-SELECT MAX(length),c.name FROM film f INNER JOIN film_category fc ON f.film_id = fc.film_id INNER JOIN
+category c ON c.category_id = fc.category_id AND c.name IN('Drama','Sports') GROUP BY (c.name) ORDER BY 1 DESC
+
+4-SELECT COUNT(c.name),c.name FROM film f INNER JOIN film_category fc ON f.film_id = fc.film_id INNER JOIN
+category c ON c.category_id = fc.category_id  GROUP BY (c.name) ORDER BY 1 DESC
+
+5-SELECT COUNT(*),(first_name ||' ' || last_name) as fullName  FROM actor a INNER JOIN film_actor fa ON fa.actor_id = a.actor_id INNER JOIN
+film f ON f.film_id = fa.film_id  GROUP BY (fullName) ORDER BY 1 DESC
+
+6-SELECT COUNT(*) FROM address a LEFT JOIN customer c ON a.address_id = c.address_id WHERE c.first_name IS NULL
+
+7-SELECT city,SUM(amount) FROM customer cu INNER JOIN address a ON cu.address_id = a.address_id 
+INNER JOIN city c ON c.city_id = a.city_id INNER JOIN payment p ON p.customer_id = cu.customer_id GROUP BY city ORDER BY 2 DESC
+
+8-SELECT (country||', '||city) as country_city,SUM(amount) FROM customer cu INNER JOIN address a ON cu.address_id = a.address_id 
+INNER JOIN city c ON c.city_id = a.city_id INNER JOIN payment p ON p.customer_id = cu.customer_id
+INNER JOIN country co ON co.country_id = c.country_id GROUP BY country_city ORDER BY 2 ASC
+
+9-SELECT ROUND((AVG(total)),2) AS AVG_AMOUNT,staff_id FROM(SELECT customer_id,staff_id,SUM(amount)
+as total FROM payment GROUP BY (customer_id,staff_id )) as sub GROUP BY staff_id ORDER BY 1 DESC
+
+
+10-SELECT(AVG(total)) as AVG_DAILY FROM ( SELECT DATE(payment_date) AS date,EXTRACT(dow FROM payment_date) as dow1, SUM(amount) as total
+FROM payment WHERE EXTRACT(dow FROM payment_date) = 0 GROUP BY dow1,date) sub 
+
+11-SELECT title,length,replacement_cost FROM film f1
+WHERE length>(SELECT AVG(length) FROM film f2 WHERE f1.replacement_cost= f2.replacement_cost) ORDER BY length 
+
+
+12-SELECT(ROUND(AVG(amount)),3) as total,district FROM(SELECT cu.customer_id, district,SUM(amount) AS amount FROM customer cu INNER JOIN address ad ON ad.address_id = cu.address_id 
+INNER JOIN payment p ON p.customer_id = cu.customer_id GROUP BY district,cu.customer_id) sub  GROUP BY district ORDER BY 1 desc
+
+
